@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        NodeJs
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Web">Web</a> / NodeJs</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <h1 class="raw">Node.js</h1>
+<h4 class="raw">1. <a href="https://github.com/maxogden/art-of-node#the-art-of-node" class="external-link" target="_blank">The art of node</a></h4>
+<p>This article expatiates asynchrous mechanism in node. It explains why node is a I/O based language. It mainly talks about &#x201C;callbacks&#x201D;, &#x201C;events&#x201D;, &#x201C;modules&#x201D;. &#x201C;stream&#x201D; is talked about in <a href="https://github.com/substack/stream-handbook#introduction" class="external-link" target="_blank">stream-handbook</a></p>
+<h4 class="raw">2. <a href="https://medium.com/@ningxia/javascript-promises-under-the-hood-4ce853fcb2c9" class="external-link" target="_blank">Javascript promise, under the hood.</a></h4>
+<p>This article illustrate how promise works by writing its own promise library squab. It clearly shows what &#x201C;promise&#x201D; generally looks like.</p>
+<h4 class="raw">3.&#x300A;&#x6DF1;&#x5165;&#x6D45;&#x51FA;node.js&#x300B;</h4>
+<p>This book explains lots of fundmental mechanism behind the scene.</p>
+<h1 class="raw">Packages</h1>
+<ul>
+<li class="raw">file system<br>
+<code>fs</code> <code>fs-extra</code> <code>chokidar</code> <code>hexo-fs</code></li>
+</ul>
+<h2 class="raw">Module</h2>
+<h3 class="raw">How does <code>require()</code> work ?</h3>
+<p><a href="http://www.ruanyifeng.com/blog/2015/05/require.html" class="external-link" target="_blank">require() &#x6E90;&#x7801;&#x89E3;&#x8BFB; by &#x962E;&#x4E00;&#x950B;</a><br>
+<a href="https://nodejs.org/api/modules.html#modules_modules" class="external-link" target="_blank">nodejs official reference about module</a></p>
+<ol>
+<li class="raw">Require statements are executed sychronously. That is, all the statements in the required module are executed before continuing execute statements after the require statement.</li>
+<li class="raw">Required modules are cached. They can be viewed as single instance.</li>
+</ol>
+<h3 class="raw">Basic modules</h3>
+<p>fs<br>
+stream<br>
+https<br>
+path</p>
+<h3 class="raw">Other common modules</h3>
+<p><a href="https://github.com/cheeriojs/cheerio" class="external-link" target="_blank">cheerio</a>: for jquery<br>
+<a href="http://underscorejs.org" class="external-link" target="_blank">underscore</a>: for underscore<br>
+<a href="http://bluebirdjs.com/docs/getting-started.html" class="external-link" target="_blank">bluebird</a>: for Promise</p>
+<h2 class="raw">Npm</h2>
+<h3 class="raw">Install</h3>
+<p><code>npm install</code> installs all dependent packages (and those dependent on these packages, and&#x2026;) specified in package.json.<br>
+<code>npm install &lt;package&gt;</code> installs &#x2018;package&#x2019;.</p>
+<p>options:</p>
+<ul>
+<li class="raw">-g : install globally  (default locally in <code>./node_modules/</code>)</li>
+<li class="raw">&#x2013;save: save to <code>package.json</code> as dependency</li>
+<li class="raw">&#x2013;save-dev: save to <code>package.json</code> as dependencyDev</li>
+</ul>
+<h3 class="raw">Others</h3>
+<p>create a symlink on mac</p>
+<pre><code>ln -s /path/to/origin /path/to/link
+</code></pre>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>

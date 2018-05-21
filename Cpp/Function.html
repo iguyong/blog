@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        Function
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Cpp">Cpp</a> / Function</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <h2 class="raw">Overloading</h2>
+<ol>
+<li class="raw">type of parameters ( conversion )</li>
+<li class="raw">number of parateters</li>
+<li class="raw">const keyword</li>
+</ol>
+<ul>
+<li class="raw">C++ allows member methods to be overloaded on the basis of const type. Overloading on the basis of const type can be useful when a function return reference or pointer.</li>
+<li class="raw">C++ allows functions to be overloaded on the basis of const-ness of parameters only if the const parameter is a reference or a pointer.</li>
+</ul>
+<h2 class="raw">Argument Passing</h2>
+<h3 class="raw">Reference Arguments</h3>
+<h3 class="raw">Array Arguments</h3>
+<h3 class="raw">List Arguments</h3>
+<h3 class="raw">Unspecified number of Arguments</h3>
+<h3 class="raw">Default Arguments</h3>
+<p>A general function often needs more arguments than are necessary to handle simple cases. In particular, functions that construct objects (&#xA7;16.2.5) often provide several options for flexibility. Consider the <strong>complex</strong> class:</p>
+<pre><code class="c++ hljs"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">complex</span> {</span>
+    <span class="hljs-keyword">double</span> re, im;
+    <span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">complex</span>(<span class="hljs-keyword">double</span> r, <span class="hljs-keyword">double</span> i) :re{r}, im{i} {} <span class="hljs-comment">// construct complex from two scalars</span>
+    <span class="hljs-keyword">complex</span>(<span class="hljs-keyword">double</span> r) :re{r}, im{<span class="hljs-number">0</span>} {} <span class="hljs-comment">// construct complex from one scalar</span>
+    <span class="hljs-keyword">complex</span>() :re{<span class="hljs-number">0</span>}, im{<span class="hljs-number">0</span>} {} <span class="hljs-comment">// default complex: {0,0}</span>
+<span class="hljs-comment">// ...</span>
+};
+</code></pre>
+<p>We could deal with the repetitiveness by considering one of the constructors &#x201C;the real one&#x201D; and forward to that (&#xA7;17.4.3):</p>
+<pre><code>complex(double r, double i) :re{r}, im{i} {} // construct complex from two scalars
+complex(double r) :complex{2,0} {} // construct complex from one scalar
+complex() :complex{0,0} {} // default complex: {0,0}
+</code></pre>
+<p>However, this can be abbreviated further:</p>
+<pre><code class="c++ hljs"><span class="xml">complex(double r =</span><span class="hljs-template-variable">{}</span><span class="xml">, double i =</span><span class="hljs-template-variable">{}</span><span class="xml">) :re</span><span class="hljs-template-variable">{r}</span><span class="xml">, im</span><span class="hljs-template-variable">{i}</span><span class="xml"> </span><span class="hljs-template-variable">{}</span><span class="xml"> // construct complex from two scalars
+</span></code></pre>
+<p>This makes it clear that if a user supplies fewer than the two arguments needed, the default is used.</p>
+<ol>
+<li class="raw">A default argument is type checked at the time of the function declaration and evaluated at the time of the call. (Default arguments that can change value are most often best avoided because they introduce subtle context dependencies.)</li>
+</ol>
+<pre><code class="c++ hljs"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">X</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> def_arg;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> =def_arg)</span></span>;
+    <span class="hljs-comment">// ...</span>
+};
+</code></pre>
+<ol start="2">
+<li class="raw">Default arguments may be provided for trailing arguments only.</li>
+</ol>
+<pre><code class="c++ hljs"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span> =<span class="hljs-number">0</span>, <span class="hljs-keyword">char</span>* =<span class="hljs-literal">nullptr</span>)</span></span>;<span class="hljs-comment">// OK</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">g</span><span class="hljs-params">(<span class="hljs-keyword">int</span> =<span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> =<span class="hljs-number">0</span>, <span class="hljs-keyword">char</span>*)</span></span>; <span class="hljs-comment">// error</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">h</span><span class="hljs-params">(<span class="hljs-keyword">int</span> =<span class="hljs-number">0</span>, <span class="hljs-keyword">int</span>, <span class="hljs-keyword">char</span>* =<span class="hljs-literal">nullptr</span>)</span></span>;<span class="hljs-comment">// error</span>
+</code></pre>
+<ol start="3">
+<li class="raw">A default argument cannot be repeated or changed in a subsequent<br>
+declaration in the same scope.</li>
+</ol>
+<pre><code class="c++ hljs"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x = <span class="hljs-number">7</span>)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> = <span class="hljs-number">7</span>)</span></span>; <span class="hljs-comment">// error: cannot repeat default argument</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> = <span class="hljs-number">8</span>)</span></span>; <span class="hljs-comment">// error: different default arguments</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">g</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x = <span class="hljs-number">9</span>)</span></span>; <span class="hljs-comment">// OK: this declaration hides the outer one</span>
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>

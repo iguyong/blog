@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        python &#x6742;&#x8BB0;
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Python">Python</a> / python-&#x6742;&#x8BB0;</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <p>types&#x5206;&#x7C7B;</p>
+<ul>
+<li>immutable: number, string, tuple</li>
+<li>mutable: list, dict, class-object</li>
+</ul>
+<p>Function arguments are passed by values: immutable objects are copied by value, while mutable objects are copied by aliasing.</p>
+<p>classes themselves are objects.</p>
+<p>Iterable, Iterator, Generator</p>
+<ul>
+<li>Iterable: implementing <strong>iter</strong>() to return an iterator.</li>
+<li>Iterator: implementing <strong>next</strong>() and using StopIteration to indicate the end of iteration.</li>
+<li>Generator: a function returning an iterator.</li>
+</ul>
+<p>Thread</p>
+<ul>
+<li class="raw">Lock &#x5373; Mutex, RLock &#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;Lock, &#x5728;&#x540C;&#x4E00;&#x7EBF;&#x7A0B;&#x4E2D;&#x53EF;&#x591A;&#x6B21;&#x83B7;&#x53D6;&#xFF08;&#x9700;&#x591A;&#x6B21;&#x91CA;&#x653E;&#xFF09;&#xFF0C;&#x652F;&#x6301; acquire() &#x548C; release()</li>
+<li class="raw">Condition&#x662F;&#x7531;&#x4E00;&#x4E2A;&#x4E3B;Lock (&#x53EF;&#x4EE5;&#x662F;RLock)&#x548C;&#x82E5;&#x5E72;&#x4E2A; Waiter Lock &#x7EC4;&#x6210;&#xFF0C;&#x9664;acquire(), release()&#x5916;&#x8FD8;&#x652F;&#x6301;wait(), notify()</li>
+<li class="raw">Semaphore &#x662F;&#x5E26;counter&#x7684;Condition</li>
+<li class="raw">Event&#x662F;Condition&#x7684;&#x4E00;&#x4E2A;adaptor&#xFF0C;&#x652F;&#x6301;set(), wait(), clear()</li>
+<li class="raw">Queue &#x662F;&#x7531;&#x82E5;&#x5E72;&#x4E2A;Contiiton&#x5B9E;&#x73B0;&#x7684;queue, &#x652F;&#x6301; put(), get(), task_done(), join()</li>
+</ul>
+<p><a href="http://www.laurentluce.com/posts/python-threads-synchronization-locks-rlocks-semaphores-conditions-events-and-queues/" class="external-link" target="_blank">Python threads synchronization: Locks, RLocks, Semaphores, Conditions, Events and Queues</a></p>
+<p><a href="http://sahandsaba.com/understanding-asyncio-node-js-python-3-4.html" class="external-link" target="_blank">Understanding Asynchronous IO With Python 3.4&#x2019;s Asyncio And Node.js</a><br>
+<a href="https://segmentfault.com/a/1190000000471602" class="external-link" target="_blank">Python &#x5F00;&#x6E90;&#x5F02;&#x6B65;&#x5E76;&#x53D1;&#x6846;&#x67B6;&#x7684;&#x672A;&#x6765; </a>(2014&#x5E74;4&#x6708;)</p>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>

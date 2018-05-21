@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        FAQ
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Cpp">Cpp</a> / FAQ</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <pre><code class="cpp hljs"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>{</span>}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span>:</span><span class="hljs-keyword">public</span> B{}
+<span class="hljs-comment">//definition of class B and class D are omitted</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    B b;
+    D d;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<ul>
+<li class="raw">How does the compiler resolve a function call ?<br>
+In the following order:
+<ol>
+<li class="raw">name loopup(scope hiding)</li>
+<li class="raw">type check(overload resolving)</li>
+<li class="raw">check accessability</li>
+<li class="raw">check deleted status</li>
+</ol>
+</li>
+<li class="raw">Are all data members static binded except for those inherited from virtual base classes ?<br>
+YES. The binding depends only on the type of pointers (or references).</li>
+<li class="raw">Are virtual function tables of base class stored in objects of derived class ?<br>
+YES. They are stored as data member of base class subobject. (Not accessable through virtual function mechanism of objects of derived class.)</li>
+<li class="raw">Is assignment operator binded staticly?<br>
+YES.<br>
+e.g.<br>
+Assignment operator expects an argument of type <code>const &amp;X</code></li>
+</ul>
+<pre><code class="cpp hljs">b = d;  <span class="hljs-comment">// OK, slice. Because D can be converted to const&amp; B</span>
+d = b; <span class="hljs-comment">// error. B can not be converted to const&amp; D</span>
+D d1;
+D d2;
+B&amp; b_ref = d2;
+b_ref = d1;  <span class="hljs-comment">//assignment operator of A is binded.</span>
+<span class="hljs-comment">//d2 now contains a mixture of b1 and b2!</span>
+</code></pre>
+<ul>
+<li class="raw">Pointer to base class can be assigned with pointer to derived class. Vice versa?<br>
+NO. Pointer to derived class can&#x2019;t be assigned to pointer to base class object.<br>
+e.g.</li>
+</ul>
+<pre><code class="cpp hljs">B b;
+B *b_ptr = &amp;b;
+D *d = b_ptr; <span class="hljs-comment">// error</span>
+</code></pre>
+<ul>
+<li class="raw">Does &#x201C;this&#x201D; in inherited member function pointer to base subobject?<br>
+YES. &#x201C;this&#x201D; should be readjusted both for virtual and non-virtual function.</li>
+</ul>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>

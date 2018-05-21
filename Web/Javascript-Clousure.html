@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        Javascript Clousure
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Web">Web</a> / Javascript-Clousure</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <h2 class="raw">Closure</h2>
+<p><a href="https://dmitryfrank.com/articles/js_closures" class="external-link" target="_blank">How do JavaScript closures work under the hood</a><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>This is the best article I&#x2019;ve read that illustrats how &#x201C;closures&#x201D; works and what is going on behind the scene when they&#x2019;re used.</p>
+<h3 class="raw">1. scope objects</h3>
+<p>Each function object has a &#x201C;scope&#x201D; property that points to the scope the function is defined. Whenever a function is called, a corresponding scope is created. (If same function is called multiple times, then multiple seprate scope object are created.) This new created scope object has a pointer pointing to its parent scope object, which is the scope property of the function object, resulting in a scope chain.</p>
+<p>Scope chain works as same as prototype chain, except that <code>ReferenceError</code> is throwed rather than <code>undefiend</code> is returned.</p>
+<p>Whenever there is a reference to it, a scope exists, even if the corresponding function is returned. Otherwise, it will be garbage-collected on occasion.</p>
+<h3 class="raw">2. this</h3>
+<p><code>this</code> is not saved as a part of the scope chain. Instead, value of <code>this</code> depends on the &#x201C;function invocation pattern&#x201D;.</p>
+<ul>
+<li class="raw">method invocation pattern</li>
+<li class="raw">function invocation pattern</li>
+<li class="raw">constructor invocation pattern</li>
+<li class="raw">apply invocation pattern<br>
+Function.prototype.apply/call/bind/</li>
+</ul>
+<p>For more details on closure, also refer to <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> and <sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="https://dmitryfrank.com/articles/js_closures" class="external-link" target="_blank">Dmitry Frank. How do JavaScript closures work under the hood ?</a> <a href="#fnref1" class="footnote-backref">&#x21A9;&#xFE0E;</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work" class="external-link" target="_blank">Stackoverflow. Several excellent introductions to closures. (especially the two most voted)</a>. <a href="#fnref2" class="footnote-backref">&#x21A9;&#xFE0E;</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions" class="external-link" target="_blank">MDN. Function reference</a> <a href="#fnref3" class="footnote-backref">&#x21A9;&#xFE0E;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>

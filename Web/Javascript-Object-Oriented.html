@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        Javascript Object Oriented
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Web">Web</a> / Javascript-Object-Oriented</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <h1 class="raw">Object oriented</h1>
+<h2 class="raw">Object</h2>
+<p>Every variable can be used as a object, except for <strong>undefined</strong> and <strong>null</strong> . Even number literal has its dot operation if the dot is not parsed as float point.</p>
+<pre><code>2.toString(); // SyntaxError
+2..toString(); // valid
+2 .toString(); // valid
+(2).toString(); //valid
+</code></pre>
+<p>However, javascript distinguish <strong>object</strong> data types (including function object and array object) from primary data types (Number, String, &#x2026;)</p>
+<pre><code class="js hljs">var a = <span class="hljs-number">3</span>;
+a.x = <span class="hljs-number">2</span>; <span class="hljs-comment">//invalid, a.x is undifiend</span>
+var b = [<span class="hljs-number">3</span>, <span class="hljs-number">2</span>];
+b.x = <span class="hljs-number">2</span>; <span class="hljs-comment">//valid</span>
+function foo(){}
+foo.x = <span class="hljs-number">2</span>; <span class="hljs-comment">//valid</span>
+var c = {}
+c.x = <span class="hljs-number">2</span>; <span class="hljs-comment">//valid</span>
+var s = <span class="hljs-string">&quot;str&quot;</span>;
+s.x = <span class="hljs-number">2</span>; <span class="hljs-comment">//invalid</span>
+</code></pre>
+<p><strong>object</strong> can be used as hash tables. A property can be accessed in two ways: dot operation and [] operation. They are equivalent, except that [] operation can be used in following two cases while dot operation can&#x2019;t:</p>
+<ul>
+<li class="raw">set property dynamiclly</li>
+<li class="raw">property name is a not valid variable name</li>
+</ul>
+<p>Objects created using {} are inherited form Object.prototype. A property can only be deleted using <code>delete</code> operation</p>
+<h2 class="raw">Usage of this</h2>
+<p><em>this</em> can only be used inside of function, it always refers to the caller of this function.</p>
+<p><em>this</em> may refers to <em>global</em></p>
+<pre><code class="js hljs"><span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span>{
+&#x3000;&#x3000;alert(<span class="hljs-keyword">this</span>.x);
+}
+test(); <span class="hljs-comment">// 1</span>
+</code></pre>
+<p><em>this</em> in constructor function</p>
+<pre><code class="js hljs"><span class="hljs-keyword">var</span> x = <span class="hljs-number">2</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span>{
+&#x3000;&#x3000;<span class="hljs-keyword">this</span>.x = <span class="hljs-number">1</span>;
+}
+<span class="hljs-keyword">var</span> o = <span class="hljs-keyword">new</span> test();
+alert(x); <span class="hljs-comment">//2&#x3000;&#x3000;</span>
+alert(o.x); <span class="hljs-comment">//1</span>
+</code></pre>
+<p><em>this</em> in bound function: apply, call</p>
+<pre><code class="js hljs"><span class="hljs-keyword">var</span> x = <span class="hljs-number">0</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span>{
+&#x3000;&#x3000;alert(<span class="hljs-keyword">this</span>.x);
+}
+<span class="hljs-keyword">var</span> o = {};
+o.x = <span class="hljs-number">1</span>;
+o.m = test;
+o.m.apply(); <span class="hljs-comment">//0</span>
+o.m.apply(o); <span class="hljs-comment">//1</span>
+
+</code></pre>
+<h2 class="raw">Prototypal inheritance</h2>
+<p>We distinguish <em>__proto__</em> from <em>prototype</em></p>
+<p>Every object (include function object) has an implicit <em>__proto__</em> property. It is this property that implements prototype chain.</p>
+<pre><code class="js hljs"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProperty</span><span class="hljs-params">(obj, prop)</span> </span>{
+  <span class="hljs-keyword">if</span> (obj.hasOwnProperty(prop))
+    <span class="hljs-keyword">return</span> obj[prop]
+
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (obj.__proto__ !== <span class="hljs-literal">null</span>)
+    <span class="hljs-keyword">return</span> getProperty(obj.__proto__, prop)
+
+  <span class="hljs-keyword">else</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">undefined</span>
+}
+</code></pre>
+<blockquote class="raw">
+<p>Note: The <code>in</code>, <code>for in</code> operations will search upward the prototype chain, use <code>hasOwnProperty</code> as filter if needed.</p>
+</blockquote>
+<p>Every constructor function has a property <em>prototype</em>, which is an empty object by default. If variable <em>x</em> is constructed (using <strong>new</strong>) by function <em>F</em>, then <code>x.__proto__ === F.prototype</code><br>
+Here is how <strong>new</strong> works:</p>
+<pre><code class="js hljs"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">New</span> (<span class="hljs-params">F</span>) </span>{
+  <span class="hljs-keyword">var</span> n = { <span class="hljs-string">&apos;__proto__&apos;</span>: f.prototype };
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    F.apply(n, <span class="hljs-built_in">arguments</span>);
+    <span class="hljs-keyword">return</span> n;
+  };
+}
+</code></pre>
+<p><img src="resources/1257C03E73D1FF8724E4A4ADC6C9D58E.png" alt="" width="372" height="267" class=""><br>
+3. <code>x = new f()</code> doesn&#x2019;t implement &#x201C;x inherits another object&#x201D;. However, Douglas Crockford found a way to exploit the new operator to do real Prototypal Inheritance!<br>
+<code>js Object.create = function (parent) { function F() {} F.prototype = parent; return new F(); };</code><br>
+4. Instance object (object that is not function) don&#x2019;t have <em>prototype</em> (undefined). This <em>prototype</em> has a <em>constructor</em> property. Whenever a constructor&#x2019;s <em>prototype</em> is manually modified, its constructor should be maintained properly. ( to ensure the correctness of operations like <code>this.constructor.prototype.constructor.prototype</code> and <code>instance of</code>)<br>
+```js<br>
+function Animal() {&#x3000;&#x3000;&#x3000;&#x3000;<br>
+this.species = &#x201C;&#x52A8;&#x7269;&#x201D;;&#x3000;&#x3000;<br>
+}</p>
+<pre><code>function Cat(name, color) {&#x3000;&#x3000;&#x3000;&#x3000;
+  this.name = name;&#x3000;&#x3000;&#x3000;&#x3000;
+  this.color = color;&#x3000;&#x3000;
+}
+Cat.prototype = new Animal();
+Cat.prototype.constructor = Cat;
+var cat1 = new Cat(&quot;&#x5927;&#x6BDB;&quot;,&quot;&#x9EC4;&#x8272;&quot;);
+alert(cat1.species); // &#x52A8;&#x7269;
+```
+The code above implement that &quot;Cat inherit Animal&quot;, which is actually &quot;cat1 inherits new Animal()&quot;
+
+&gt;* Not standard: *\_\_proto__* is non-standard and even deprecated. Also native Object.create and Douglas Crockford implementation are not exactly equivalent.
+&gt;* Not optimized: Object.create (native or custom) has not yet been as heavily optimized as the new construction. It can be up to 10 times slower.
+</code></pre>
+<ol start="5">
+<li class="raw">class inheritance<br>
+The class keyword is introduced in ES6, but is syntactical sugar, JavaScript remains prototype-based</li>
+</ol>
+<p>References:<br>
+<a href="http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html" class="external-link" target="_blank">Javascript &#x2013; How Prototypal Inheritance really works</a> (by vjeux)<br>
+<a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014344997013405abfb7f0e1904a04ba6898a384b1e925000" class="external-link" target="_blank">&#x539F;&#x578B;&#x7EE7;&#x627F;</a> (by &#x5ED6;&#x96EA;&#x5CF0;)<br>
+<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" class="external-link" target="_blank">Javascript&#x7EE7;&#x627F;&#x673A;&#x5236;&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;</a> (by &#x962E;&#x4E00;&#x950B;)<br>
+<a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance.html" class="external-link" target="_blank">Javascript&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#xFF08;&#x4E8C;&#xFF09;&#xFF1A;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x7EE7;&#x627F;</a> (by &#x962E;&#x4E00;&#x950B;)<br>
+<a href="http://javascript.info/tutorial/inheritance" class="external-link" target="_blank">Prototypal inheritance</a></p>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>

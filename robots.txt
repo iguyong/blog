@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /*/index.html$
+Disallow: /stickers.html
+Disallow: /404.html
+Disallow: /tags.html
+Disallow: /search.html
+Disallow: /icon/

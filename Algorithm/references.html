@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        references
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Algorithm">Algorithm</a> / references</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <ol>
+<li class="raw"><a href="http://sites.math.rutgers.edu/~ajl213/CLRS/CLRS.html" class="external-link" target="_blank">[Solutions] Introduction to algorithms, 3rd</a></li>
+</ol>
+<p>Graph Algorithm (4+3+3+5 = 10 algs)</p>
+<ol>
+<li class="raw">Elementary
+<ul>
+<li class="raw">BFS</li>
+<li class="raw">DFS</li>
+<li class="raw">Topological Sort</li>
+<li class="raw">SCC</li>
+</ul>
+</li>
+<li class="raw">MST
+<ul>
+<li class="raw">Generic-MST</li>
+<li class="raw">Kruskal</li>
+<li class="raw">Prim</li>
+</ul>
+</li>
+<li class="raw">SSSP
+<ul>
+<li class="raw">Bellman-Ford</li>
+<li class="raw">SSSP-DAG</li>
+<li class="raw">Dijkstra</li>
+</ul>
+</li>
+<li class="raw">APSP
+<ul>
+<li class="raw">Slow-Matrix-Mulplication</li>
+<li class="raw">Faster-Matrix-Mulplication</li>
+<li class="raw">Floyd-Warshall</li>
+<li class="raw">Transitive Clousure</li>
+<li class="raw">Johnson</li>
+</ul>
+</li>
+</ol>
+<h2 class="raw">Elementary</h2>
+<p>BFS(G,s)</p>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span>
+<span data-linenumber="8"></span>
+<span data-linenumber="9"></span>
+<span data-linenumber="10"></span>
+<span data-linenumber="11"></span></div><div class="code"><span class="hljs-keyword">for</span> each v <span class="hljs-keyword">in</span> G.V
+    color[v] = White
+Q={s}    // FIFO queue
+<span class="hljs-keyword">while</span> Q <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty
+    u = Q.pop()
+    <span class="hljs-keyword">for</span> each v <span class="hljs-keyword">in</span> G.adj[u]
+        <span class="hljs-keyword">if</span> color[v] == White
+            visit(v)
+            Q.push(v)
+            color[v] = Gray
+    color[u] = Black    //optional
+</div></div></code></pre>
+<div>DFS(G)</div>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span></div><div class="code">time = <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> each v <span class="hljs-keyword">in</span> G.V
+    v.color = WHITE
+    v.pie = NIL
+<span class="hljs-keyword">for</span> each v <span class="hljs-keyword">in</span> G.V
+    <span class="hljs-keyword">if</span> v.color == White
+        DFS-visit(G,v)
+</div></div></code></pre>
+<p>DFS-Visit(G,u)</p>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span>
+<span data-linenumber="8"></span>
+<span data-linenumber="9"></span>
+<span data-linenumber="10"></span></div><div class="code">time += <span class="hljs-number">1</span>
+u.d = time
+u.color = GRAY   //discover u
+<span class="hljs-keyword">for</span> each v <span class="hljs-keyword">in</span> G.adj[u]
+    <span class="hljs-keyword">if</span> v.color == WHITE
+        v.pie = u
+        DFS(G,v)
+time = time + <span class="hljs-number">1</span>
+u.f = time
+u.color = BLACK    //close u
+</div></div></code></pre>
+<p>Topological-Sort(G)</p>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span></div><div class="code">call DFS(G) to compute finishing time v.f <span class="hljs-keyword">for</span> each vertex v
+<span class="hljs-keyword">as</span> each vertex <span class="hljs-keyword">is</span> finished, insert it into the front of a linked list
+<span class="hljs-keyword">return</span> the linked list
+</div></div></code></pre>
+<p>Compute-SCC(G)</p>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span></div><div class="code">call DFS(G) to compute finishing time v.f for each vertex v
+compute G&apos;
+call DFS(G&apos;), but in the main loop of DFS, consider the vertex in order of decreasing v.f (as computed in line 1)
+output the vertices of each tree computed in line 3 as a seperate strong connected component
+</div></div></code></pre>
+<p>Note:</p>
+<ol>
+<li class="raw"><span class="mathjax raw">\(G^{SCC}\)</span> is a DAG</li>
+<li class="raw">Let <span class="mathjax raw">\(C_1,C_2\)</span> be two seperate SCCs, if there exists an edge <span class="mathjax raw">\(e\)</span> from <span class="mathjax raw">\(C_1\)</span> to <span class="mathjax raw">\(C_2\)</span>, then <span class="mathjax raw">\(f(C_1) &gt; f(C_2)\)</span>, i.e. <span class="mathjax raw">\(\max_{v\in C_1} v.f &gt; \max_{v\in C_2} v.f\)</span>, which implies that we&#x2019;re considering components in topological order in line 3</li>
+</ol>
+<h2 class="raw">MST</h2>
+<p>G=(V,E,w) is connected</p>
+<p>Generic(G,w)</p>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span></div><div class="code">A = {}
+<span class="hljs-keyword">while</span> A does <span class="hljs-keyword">not</span> form a spanning tree
+    find an edge (u,v) that <span class="hljs-keyword">is</span> safe <span class="hljs-keyword">for</span> A
+    insert (u,v) into A
+<span class="hljs-keyword">return</span> A
+</div></div></code></pre>
+<p>Kruskal(G,w)</p>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span>
+<span data-linenumber="8"></span>
+<span data-linenumber="9"></span></div><div class="code">A = {}
+<span class="hljs-keyword">for</span> each v <span class="hljs-keyword">in</span> G.V
+    Make-Set(v)
+sort G.E <span class="hljs-keyword">in</span> nondecreaing order
+<span class="hljs-keyword">for</span> each edge (u,v) <span class="hljs-keyword">in</span> G.E, taken <span class="hljs-keyword">in</span> nondecreaing order
+    <span class="hljs-keyword">if</span> Find-Set(u) != Find-Set(v)
+        insert (u,v) into A
+        UNION(u,v)
+<span class="hljs-keyword">return</span> A
+</div></div></code></pre>
+<p>Prim(G,w,r)</p>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span>
+<span data-linenumber="8"></span>
+<span data-linenumber="9"></span>
+<span data-linenumber="10"></span>
+<span data-linenumber="11"></span></div><div class="code"><span class="hljs-keyword">for</span> each v <span class="hljs-keyword">in</span> G.V
+    v.d = \infty
+    v.pie = NIL
+r.d = <span class="hljs-number">0</span>
+Q = G.V  //min priority queue
+<span class="hljs-keyword">while</span> Q <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty
+    u = Extract-Min(Q)
+    <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> G.adj(u)
+        <span class="hljs-keyword">if</span> v.d &gt; u.d + w(u,v)
+            v.d = u.d + w(u,v)
+            v.pie = u
+</div></div></code></pre>
+<h2 class="raw">SSSP</h2>
+<p>Initialize-Single-Source(G,s)</p>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span></div><div class="code"><span class="hljs-keyword">for</span> each v <span class="hljs-keyword">in</span> G.V
+    v.pie = NIL
+    v.d = INFTY
+s.d = <span class="hljs-number">0</span>
+</div></div></code></pre>
+<p>Relax(u,v,w)</p>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span></div><div class="code"><span class="hljs-keyword">if</span> v.d &gt; u.d + w(u,v)
+    v.d = u.d + w(u,v)
+    v.pie = u
+</div></div></code></pre>
+<div>Bellman-Ford(G,w,s)</div>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span>
+<span data-linenumber="8"></span></div><div class="code">Initialize(G,s)
+<span class="hljs-keyword">for</span> i = <span class="hljs-number">1</span> to n - <span class="hljs-number">1</span>
+    <span class="hljs-keyword">for</span> each edge (u,v) <span class="hljs-keyword">in</span> G.E
+        Relax(u,v,w)
+<span class="hljs-keyword">for</span> each edge (u,v) <span class="hljs-keyword">in</span> G.E
+    <span class="hljs-keyword">if</span> v.d &gt; u.d + w(u,v)
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">False</span>
+<span class="hljs-keyword">return</span> <span class="hljs-keyword">True</span>
+</div></div></code></pre>
+<p>Note:</p>
+<ol>
+<li class="raw">if there exists a negative cycle of length k, then at least one edge on the cycle can be truely relaxed after all vertecies of the cycle having finite distances.</li>
+</ol>
+<p>SSSP-DAG(G,w,s)</p>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span></div><div class="code">Topological-Sort(G)
+Initialize-Single-Source(G,s)
+<span class="hljs-keyword">for</span> each u taken <span class="hljs-keyword">in</span> topological order
+    <span class="hljs-keyword">for</span> each v <span class="hljs-keyword">in</span> G.adj[u]
+        Relax(u,v)
+</div></div></code></pre>
+<p>Dijkstra(G,w,s)</p>
+<pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span></div><div class="code">Initialize(G,w,s)
+Q = G.V  //min priority queue 
+<span class="hljs-keyword">while</span> Q <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empyt
+    u = Extract-Min(Q)
+    <span class="hljs-keyword">for</span> each v <span class="hljs-keyword">in</span> G.adj[u]
+        Relax(u,v)
+</div></div></code></pre>
+<h3 class="raw">APSP</h3>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>

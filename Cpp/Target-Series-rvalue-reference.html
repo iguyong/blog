@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        Target Series: rvalue reference
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Cpp">Cpp</a> / Target-Series-rvalue-reference</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <h2 class="raw">lvalues, rvalues</h2>
+<ul>
+<li class="raw">lvalues/rvalues are expression types, used to tell compiler whether it&#x2019;s eligible to be moved from.</li>
+<li class="raw">rvalues are eligible to be moved from, but not guaranted. <em>const rvalues</em> are not eligible.</li>
+<li class="raw">Applying <em>std::move</em> to an (const) object casts it to rvalue. The returned type is (const) rvalue reference.</li>
+<li class="raw">expression types are independent of object types. e.g. a rvalue reference can be either an lvalue or an rvalue (depending on whether it has a name)</li>
+</ul>
+<p>lvalue(has identity, not movable), xvalue(has identity, movable), rvalue(movable), prvalue (movable, no identity)</p>
+<p>One way to distinguish between lvalue and rvalue is to consider whether the expression has an &#x201C;owner&#x201D;. An &#x201C;owner&#x201D; assumes that it can access the expression&#x2019;s normal value (not destructed).<br>
+So, a variable name is an &#x201C;owner&#x201D; of the object it stands for. A pointer is an &#x201C;owner&#x201D; of the object it refers to, etc.<br>
+An lvalue reference returned by a function has an &#x201C;owner&#x201D; (e.g. [] operator), hence it&#x2019;s an lvalue.<br>
+An rvalue reference returned by a function doesn&#x2019;t have an &#x201C;owner&#x201D; (e.g. std::move&#xFF09;, hence it&#x2019;s an rvalue. However, if it&#x2019;s afterwards binded to a variable name, it has a &#x201C;owner&#x201D;.</p>
+<pre><code class="c_cpp hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span>
+<span data-linenumber="3"></span>
+<span data-linenumber="4"></span>
+<span data-linenumber="5"></span>
+<span data-linenumber="6"></span>
+<span data-linenumber="7"></span>
+<span data-linenumber="8"></span></div><div class="code"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span><span class="hljs-params">(Widget&amp; w)</span></span>{
+  <span class="hljs-comment">//...</span>
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span><span class="hljs-params">(Widget&amp;&amp; w)</span></span>{
+  <span class="hljs-comment">//...    // w is an lvalue, one reason to consider w to be an &quot;owner&quot; is that w may be used multiple times in the function body. We need to assume w can access its undestructed value.</span>
+}
+Widget w;
+f(std::move(w));  <span class="hljs-comment">// std::move(w) is an rvalue, so the move version of f is called</span>
+</div></div></code></pre>
+<h2 class="raw">reference</h2>
+<ol>
+<li class="raw">
+<p>For effiency, pointers to large objects are used. However, pointers have some annoy features:</p>
+<ul>
+<li class="raw">The syntax is different</li>
+<li class="raw">A pointer may point to different objects</li>
+<li class="raw">A pointer may be nullptr</li>
+</ul>
+<p>The language mechanism addressing these problems is called a <em>reference</em>.</p>
+<blockquote class="raw">
+<p>It doesn&#x2019;t do much harm to think about a reference as a pointer that is dereferenced each time it is used, as long as one remember that a reference isn&#x2019;t an object. (In some cases, the compiler can optimize away a reference so that there is no object representing that reference at run time)</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li class="raw">references are implicitly dereferenced. Only in initialization can they be read or written to.</li>
+</ul>
+<ol start="2">
+<li class="raw">
+<p>Since the goal of an ordinary reference is to mimic the object it reference to, we need to reflect lvalue/rvalue and const/non-const distinctions. There are three kinds of references:</p>
+<ul>
+<li class="raw">lvalue reference: to refer to objects whose value we want to change</li>
+<li class="raw">const reference: to refer to objects whose value we do not want to change (e.g. a constant)</li>
+<li class="raw">rvalue reference: to refer to objects whose value we do not need to preserve after we have used it (e.g. a temporary)</li>
+</ul>
+<p>The first two are both called <em>lvalue reference</em>.</p>
+</li>
+</ol>
+<h2 class="raw">lvalue reference</h2>
+<p>The initializer for a &#x201C;plain&#x201D; <strong>T&amp;</strong> must be an lvalue of type <strong>T</strong><br>
+The initializer for a <strong>const T&amp;</strong> need not be an lvalue or even of type <strong>T</strong>. In such cases, a temporary object is created and implicit conversion is applied if necessary and it points to the temporary object. (otherwise it points to the initializer object)</p>
+<h2 class="raw">rvalue reference</h2>
+<p>An rvalue reference can bind to an rvalue, but not to an lvalue.<br>
+Both a const lvalue reference and an rvalue reference can bind to an rvalue. However, the purposes will be fundamentally different:</p>
+<ul>
+<li class="raw">We use rvalue references to implement a &#x201C;destructive read&#x201D; for optimization of what would otherwise have required a copy.</li>
+<li class="raw">We use a <strong>const</strong> lvalue reference to prevent modification of an argument.</li>
+</ul>
+<h2 class="raw">reference binding</h2>
+<ol>
+<li class="raw">lvalue references</li>
+<li class="raw">const lvalue reference</li>
+<li class="raw">rvalue references</li>
+<li class="raw">const rvalue references</li>
+</ol>
+<p>lvalue may binds to #1, #2<br>
+const lvalue may binds to #2<br>
+rvalue may binds to #3, #4, #2<br>
+const rvalue may binds to #4, #2</p>
+<p>The binding order is used in function overloading.</p>
+<h2 class="raw">reference collapse</h2>
+<p>In <strong>reference collapse</strong>, lvalue reference always wins.<br>
+Reference to reference can only happen as the result of an alias or a template type argument. (i.e. when the compiler &#x201C;calculate&#x201D; a reference type)</p>
+<pre><code class="c_cpp hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="1"></span></div><div class="code">int <span class="hljs-meta">&amp;&amp; &amp;r - i;  <span class="hljs-comment">//error</span></span>
+</div></div></code></pre>
+<h2 class="raw">Universal reference</h2>
+<h2 class="raw">std::move and std::forward</h2>
+<ul>
+<li class="raw"><strong>std::move</strong> performs an unconditional cast to an rvalue. In and of itself, it doesn&#x2019;t move anything.</li>
+<li class="raw"><strong>std::forward</strong> casts its argument to an rvalue only if that argument is bound to an rvalue.</li>
+<li class="raw">Neither <strong>std::move</strong> nor <strong>std::forward</strong> do anything at runtime.</li>
+</ul>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>

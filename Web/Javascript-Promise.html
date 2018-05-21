@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        Javascript Promise
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Web">Web</a> / Javascript-Promise</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <h1 class="raw">Promise</h1>
+<p><a href="https://medium.com/@ningxia/javascript-promises-under-the-hood-4ce853fcb2c9" class="external-link" target="_blank">Javascript promise, under the hood.</a></p>
+<p>This article illustrate how promise works by writing its own promise library squab. It clearly shows what &#x201C;promise&#x201D; generally looks like.</p>
+<p>A Promise represents a value which may be available now, or in the future, or never.<br>
+It&#x2019;s just a syntactical sugar for asynchronous function callback.<br>
+<a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345008539155e93fc16046d4bb7854943814c4f9dc2000" class="external-link" target="_blank">Promise by &#x5ED6;&#x96EA;&#x950B;</a></p>
+<h2 class="raw">Promise/A+</h2>
+<p><a href="https://promisesaplus.com" class="external-link" target="_blank">The official specification</a></p>
+<h5 class="raw">1. A &#x2018;promise&#x2019; is an object or function with a <code>then</code> method whose behavior conforms to this specification.</h5>
+<h5 class="raw">2. A promise must be in one of three states: pending, fulfilled, or rejected.</h5>
+<p>When pending, a promise:</p>
+<ul>
+<li class="raw">may transition to either the fulfilled or rejected state.</li>
+</ul>
+<p>When fulfilled, a promise:</p>
+<ul>
+<li class="raw">must not transition to any other state.</li>
+<li class="raw">must have a value, which must not change.<br>
+When rejected, a promise:</li>
+<li class="raw">must not transition to any other state.</li>
+<li class="raw">must have a reason, which must not change.</li>
+</ul>
+<p>Here, &#x201C;must not change&#x201D; means immutable identity (i.e. ===), but does not imply deep immutability.</p>
+<h5 class="raw">3. A promise must provide a then method to access its current or eventual value or reason.</h5>
+<p>A promise&#x2019;s then method accepts two arguments (both are optional, non-function are ignored):</p>
+<pre><code>promise.then(onFulfilled, onRejected)
+</code></pre>
+<p><code>then</code> must return a promise</p>
+<pre><code class="js hljs"><span class="hljs-meta">&apos;use strict&apos;</span>;
+<span class="hljs-keyword">var</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;p1 creating...&apos;</span>); <span class="hljs-comment">//execute immediately</span>
+    reject(<span class="hljs-string">&apos;rejecting&apos;</span>);  <span class="hljs-comment">//transit to fulfilled</span>
+    resolve(<span class="hljs-string">&apos;resolving&apos;</span>); <span class="hljs-comment">//invalid</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;p1 created&apos;</span>); <span class="hljs-comment">//execute immediately</span>
+});
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> p1); <span class="hljs-comment">//object</span>
+<span class="hljs-built_in">console</span>.log(p1);
+p1.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(result)
+}, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(err)
+});
+</code></pre>
+<p>output:</p>
+<pre><code>p1 creating...
+p1 created
+object
+Promise { &lt;rejected&gt; &apos;rejecting&apos; }
+rejecting
+</code></pre>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>

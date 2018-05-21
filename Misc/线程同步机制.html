@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        &#x7EBF;&#x7A0B;&#x540C;&#x6B65;&#x673A;&#x5236;
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Misc">Misc</a> / &#x7EBF;&#x7A0B;&#x540C;&#x6B65;&#x673A;&#x5236;</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <h2 class="raw">&#x7EBF;&#x7A0B;&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h2>
+<p>&#x7EBF;&#x7A0B;&#x540C;&#x6B65;&#x7684;&#x5E95;&#x5C42;&#x652F;&#x6301;&#x5305;&#x62EC;&#xFF1A;</p>
+<ol>
+<li class="raw">TSL &#xFF08;&#x6216;&#x5176;&#x5B83;&#xFF09;&#x539F;&#x5B50;&#x64CD;&#x4F5C;</li>
+<li class="raw">&#x4E2D;&#x65AD;&#x670D;&#x52A1;</li>
+</ol>
+<h2 class="raw">&#x4E92;&#x65A5;&#x9501;Mutex</h2>
+<p>&#x6700;&#x57FA;&#x672C;&#x7684;&#x540C;&#x6B65;&#x673A;&#x5236;&#x662F;&#x9501;&#xFF08;Lock&#xFF09;&#xFF0C;&#x5305;&#x62EC; &#x4E92;&#x65A5;&#x9501;(Mutex), Read-Write &#x9501;, &#x7A7A;&#x8F6C;&#x9501;&#x3002;&#x4EE5;Mutex&#x4E3A;&#x4F8B;&#xFF1A;</p>
+<ul>
+<li class="raw">&#x5BF9;Mutex&#x72B6;&#x6001;&#x7684;&#x5224;&#x65AD;&#x53CA;&#x4FEE;&#x6539;&#x662F;&#x901A;&#x8FC7;&#x673A;&#x5668;&#x63D0;&#x4F9B;&#x7684;&#x539F;&#x5B50;&#x6027;&#x6307;&#x4EE4;&#x5B8C;&#x6210;&#x7684;&#x3002;</li>
+<li class="raw">&#x6BCF;&#x4E2A;Mutex&#x4E0A;&#x6709;&#x4E00;&#x4E2A;&#x7B49;&#x5F85;&#x961F;&#x5217;&#xFF08;waiting list)</li>
+<li class="raw">Lock()&#x64CD;&#x4F5C;&#x5728;&#x201D;locked&#x201D; &#x60C5;&#x51B5;&#x4E0B;&#x4F1A;&#x88AB;&#x6302;&#x8D77;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5148;&#x7A7A;&#x8F6C;&#xFF08;spin&#xFF09;&#x4E00;&#x5C0F;&#x4F1A;&#x518D;&#x6321;&#x571F;&#x6302;&#x8D77;&#xFF08;yield&#xFF09;&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4F1A;&#x52A0;&#x5165;&#x5230;Mutex&#x7684;waiting list&#x4E2D;&#x3002;</li>
+<li class="raw">&#x6302;&#x8D77;&#x662F;&#x6307;&#x5C06;&#x7EBF;&#x7A0B;&#x7F6E;&#x4E8E;&#x201D;&#x7761;&#x7720;&#x201C;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x8C03;&#x7528;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#x51FD;&#x6570;&#x5207;&#x6362;&#x5230;&#x5176;&#x5B83;&#x7EBF;&#x7A0B;</li>
+<li class="raw">Unlock() &#x64CD;&#x4F5C;&#x4F1A;&#x91CA;&#x653E;&#x9501;, &#x5E76;&#x4E14;&#x5524;&#x9192;waiting list&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#xFF08;&#x6216;&#x6240;&#x6709;&#xFF09;&#x7EBF;&#x7A0B;&#x3002;</li>
+</ul>
+<h2 class="raw">Condition Variables</h2>
+<p>pthread_join()&#x89E3;&#x51B3;&#x7684;&#x662F;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x7B49;&#x5F85;&#x540C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x7ED3;&#x675F;&#x3002;Condition variable&#x89E3;&#x51B3;&#x7684;&#x662F;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x7B49;&#x5F85;&#x67D0;&#x4E2A;&#x6761;&#x4EF6;&#x53D1;&#x751F;&#x3002;</p>
+<ul>
+<li class="raw">Condition&#x4E3B;&#x8981;&#x7528;&#x6765;&#x5B9E;&#x73B0;&#x901A;&#x77E5;/&#x540C;&#x6B65;&#x673A;&#x5236;&#xFF0C;&#x5185;&#x90E8;&#x4E5F;&#x662F;&#x7531;waiting list&#x5B9E;&#x73B0;&#x3002;&#x5B9E;&#x9645;&#x4E0A;Mutex&#x4E5F;&#x6709;&#x201D;&#x901A;&#x77E5;&#x5524;&#x9192;&#x201C;&#x529F;&#x80FD;&#xFF0C;&#x4F46;Mutex&#x529F;&#x80FD;&#x8FC7;&#x4E8E;&#x7B80;&#x5355;&#xFF0C;&#x7528;&#x6765;&#x5B9E;&#x73B0;&#x901A;&#x77E5;/&#x540C;&#x6B65;&#x529F;&#x80FD;&#x65F6;&#x5BB9;&#x6613;&#x51FA;&#x95EE;&#x9898;&#xFF1A;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x9700;&#x8981;&#x4E0D;&#x65AD;&#x7684;&#x8BD5;&#x56FE;&#x83B7;&#x53D6;Mutex&#x9501;&#x5E76;&#x68C0;&#x67E5;&#x6761;&#x4EF6;&#x662F;&#x5426;&#x53D1;&#x751F;&#xFF0C;&#x4ECE;&#x800C;&#x6D6A;&#x8D39;&#x5927;&#x91CF;&#x8D44;&#x6E90;&#x3002;&#xFF08;python&#x7684;condition&#x5185;&#x90E8;&#x5C31;&#x662F;&#x7528;&#x591A;&#x4E2A;waiter lock&#x5B9E;&#x73B0;&#x7684;&#x3002;&#xFF09;</li>
+<li class="raw">Condition &#x4E00;&#x5B9A;&#x8981;&#x914D;&#x5408; Mutex &#x624D;&#x80FD;&#x4F7F;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x72B6;&#x6001;&#x7684;&#x68C0;&#x6D4B;/&#x6539;&#x53D8;&#x4E0E;&#x7B49;&#x5F85;/&#x53D1;&#x4FE1;&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x5177;&#x6709;&#x539F;&#x5B50;&#x6027;&#x3002;</li>
+<li class="raw">wait() &#x4F1A;&#x81EA;&#x52A8;&#x91CA;&#x653E;Mutex, &#x7B49;&#x5230;&#x88AB;&#x5524;&#x9192;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x53BB;&#x83B7;&#x53D6;Mutex</li>
+<li class="raw">notify() &#x4F1A;&#x5524;&#x5524;&#x9192;waiting list&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;</li>
+<li class="raw">&#x68C0;&#x6D4B;&#x6761;&#x4EF6;&#x72B6;&#x6001;&#x8981;&#x7528;while, &#x53D1;&#x4FE1;&#x53F7;&#x8981;&#x5728;&#x4E34;&#x754C;&#x533A;</li>
+</ul>
+<h2 class="raw">Semaphore &#x4FE1;&#x53F7;&#x91CF;</h2>
+<p>semaphore&#x662F;&#x8FDB;&#x7A0B;&#x95F4;PV&#xFF0C;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x5E26;&#x8BA1;&#x6570;&#x5668;&#x7684;Condition variable</p>
+<h2 class="raw">Python&#x4E2D;&#x7684;Event, Queue</h2>
+<h2 class="raw">References</h2>
+<p><a href="http://blog.csdn.net/goondrift/article/details/19044361" class="external-link" target="_blank">&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5982;&#x4F55;&#x5B9E;&#x73B0;mutex</a><br>
+<a href="https://casatwy.com/pthreadde-ge-chong-tong-bu-ji-zhi.html" class="external-link" target="_blank">pthread&#x7684;&#x5404;&#x79CD;&#x540C;&#x6B65;&#x673A;&#x5236;</a><br>
+<a href="https://stackoverflow.com/questions/12551341/when-is-a-condition-variable-needed-isnt-a-mutex-enough" class="external-link" target="_blank">When is a condition variable needed, isn&#x2019;t a mutex enough?</a><br>
+<a href="http://www.laurentluce.com/posts/python-threads-synchronization-locks-rlocks-semaphores-conditions-events-and-queues/" class="external-link" target="_blank">Python threads synchronization: Locks, RLocks, Semaphores, Conditions, Events and Queues</a><br>
+<a href="http://www.cnblogs.com/Dahaka/archive/2012/02/19/2358528.html" class="external-link" target="_blank">&#x5173;&#x4E8E;Condition Variable&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x4E00;&#x4E2A;Mutex&#x7684;&#x601D;&#x8003;</a><br>
+<a href="https://www.cnblogs.com/vamei/archive/2012/10/09/2715393.html" class="external-link" target="_blank">Linux&#x5E76;&#x53D1;&#x4E0E;&#x540C;&#x6B65;</a></p>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>

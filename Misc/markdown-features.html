@@ -1,0 +1,446 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        markdown features
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Misc">Misc</a> / markdown-features</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <p>Features that Quiver&#x2019;s markdwon does not support while hackmd does :</p>
+<ul class="contains-task-list">
+<li class="task-list-item raw"><input class="task-list-item-checkbox" disabled type="checkbox"> front meta</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" disabled type="checkbox"> blockquote tags (time, author)</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" disabled type="checkbox"> code block line number</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" disabled type="checkbox"> anchor</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" disabled type="checkbox"> toc</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" checked disabled type="checkbox"> emoji (</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" checked disabled type="checkbox"> fontawesome icons</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" checked disabled type="checkbox"> container</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" checked disabled type="checkbox"> footnote</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" checked disabled type="checkbox"> abbr</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" checked disabled type="checkbox"> deflist</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" checked disabled type="checkbox"> emphasis: mark, sup, sub, ins</li>
+</ul>
+<h1 class="raw">Features</h1>
+<h2 class="raw">Embed a Note:</h2>
+<p>Notes can be embedded as follows:</p>
+<pre><code class="xml hljs"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://hackmd.io/features&quot;</span> <span class="hljs-attr">frameborder</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span>
+</code></pre>
+<h1 class="raw">View</h1>
+<h2 class="raw">Table of Contents:</h2>
+<p>You can look at the bottom right section of the view area, there is a <em>ToC</em> button <i class="fa fa-bars"></i>.<br>
+Pressing that button will show you a current <em>Table of Contents</em>, and will highlight which section you&#x2019;re at.<br>
+ToCs support up to <strong>three header levels</strong>.</p>
+<h2 class="raw">Permalink</h2>
+<p>Every header will automatically add a permalink on the right side.<br>
+You can hover and click <i class="fa fa-chain"></i> to anchor on it.</p>
+<h2 class="raw">ToC:</h2>
+<p>Use the syntax <code>[TOC]</code> to embed table of content into your note.</p>
+<p>[TOC]</p>
+<h2 class="raw">Emoji</h2>
+<p>You can type any emoji like this <img align="absmiddle" alt=":smile:" class="emoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/smile.png" title=":smile:"> <img align="absmiddle" alt=":smiley:" class="emoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/smiley.png" title=":smiley:"> <img align="absmiddle" alt=":cry:" class="emoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/cry.png" title=":cry:"> <img align="absmiddle" alt=":wink:" class="emoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/wink.png" title=":wink:"></p>
+<blockquote class="raw">
+<p>See full emoji list <a href="http://www.emoji-cheat-sheet.com/" class="external-link" target="_blank">here</a>.</p>
+</blockquote>
+<h2 class="raw">ToDo List:</h2>
+<ul class="contains-task-list">
+<li class="task-list-item raw"><input class="task-list-item-checkbox" disabled type="checkbox"> ToDos
+<ul class="contains-task-list">
+<li class="task-list-item raw"><input class="task-list-item-checkbox" checked disabled type="checkbox"> Buy some salad</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" disabled type="checkbox"> Brush teeth</li>
+<li class="task-list-item raw"><input class="task-list-item-checkbox" checked disabled type="checkbox"> Drink some water</li>
+</ul>
+</li>
+</ul>
+<h2 class="raw">Code Block:</h2>
+<p>We support many programming languages, use the auto complete function to see the entire list.</p>
+<pre><code class="javascript hljs"><span class="hljs-keyword">var</span> s = <span class="hljs-string">&quot;JavaScript syntax highlighting&quot;</span>;
+alert(s);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">$initHighlight</span>(<span class="hljs-params">block, cls</span>) </span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">if</span> (cls.search(<span class="hljs-regexp">/\bno\-highlight\b/</span>) != <span class="hljs-number">-1</span>)
+      <span class="hljs-keyword">return</span> process(block, <span class="hljs-literal">true</span>, <span class="hljs-number">0x0F</span>) + 
+             <span class="hljs-string">&apos; class=&quot;&quot;&apos;</span>;
+  } <span class="hljs-keyword">catch</span> (e) {
+    <span class="hljs-comment">/* handle exception */</span>
+  }
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> / <span class="hljs-number">2</span>; i &lt; classes.length; i++) {
+    <span class="hljs-keyword">if</span> (checkCondition(classes[i]) === <span class="hljs-literal">undefined</span>)
+      <span class="hljs-keyword">return</span> <span class="hljs-regexp">/\d+[\s/]/g</span>;
+  }
+}
+</code></pre>
+<blockquote class="raw">
+<p>If you want <strong>line numbers</strong>, type <code>=</code> after specifying the code block languagues.<br>
+Also, you can specify the start line number.<br>
+Like below, the line number starts from 101:</p>
+</blockquote>
+<pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber"><span data-linenumber="101"></span>
+<span data-linenumber="102"></span>
+<span data-linenumber="103"></span>
+<span data-linenumber="104"></span>
+<span data-linenumber="105"></span>
+<span data-linenumber="106"></span>
+<span data-linenumber="107"></span>
+<span data-linenumber="108"></span>
+<span data-linenumber="109"></span>
+<span data-linenumber="110"></span>
+<span data-linenumber="111"></span>
+<span data-linenumber="112"></span>
+<span data-linenumber="113"></span>
+<span data-linenumber="114"></span>
+<span data-linenumber="115"></span></div><div class="code"><span class="hljs-keyword">var</span> s = <span class="hljs-string">&quot;JavaScript syntax highlighting&quot;</span>;
+alert(s);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">$initHighlight</span>(<span class="hljs-params">block, cls</span>) </span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">if</span> (cls.search(<span class="hljs-regexp">/\bno\-highlight\b/</span>) != <span class="hljs-number">-1</span>)
+      <span class="hljs-keyword">return</span> process(block, <span class="hljs-literal">true</span>, <span class="hljs-number">0x0F</span>) + 
+             <span class="hljs-string">&apos; class=&quot;&quot;&apos;</span>;
+  } <span class="hljs-keyword">catch</span> (e) {
+    <span class="hljs-comment">/* handle exception */</span>
+  }
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> / <span class="hljs-number">2</span>; i &lt; classes.length; i++) {
+    <span class="hljs-keyword">if</span> (checkCondition(classes[i]) === <span class="hljs-literal">undefined</span>)
+      <span class="hljs-keyword">return</span> <span class="hljs-regexp">/\d+[\s/]/g</span>;
+  }
+}
+</div></div></code></pre>
+<blockquote class="raw">
+<p>Or you might want to continue the previous code block&#x2019;s line number, use <code>=+</code></p>
+</blockquote>
+<pre><code class="javascript hljs"><div class="wrapper"><div class="gutter linenumber continue"><span data-linenumber="1"></span>
+<span data-linenumber="2"></span></div><div class="code"><span class="hljs-keyword">var</span> s = <span class="hljs-string">&quot;JavaScript syntax highlighting&quot;</span>;
+alert(s);
+</div></div></code></pre>
+<blockquote class="raw">
+<p>Somtimes you have a super long text without breaks. It&#x2019;s time to use <code>!</code> to wrap your code.</p>
+</blockquote>
+<pre><code class="wrap hljs">When you&#x2019;re a carpenter making a beautiful chest of drawers, you&#x2019;re not going to use a piece of plywood on the back.
+</code></pre>
+<h2 class="raw">MathJax</h2>
+<p>You can render <em>LaTeX</em> mathematical expressions using <strong>MathJax</strong>, as on <a href="http://math.stackexchange.com/" class="external-link" target="_blank">math.stackexchange.com</a>:</p>
+<p>The <em>Gamma function</em> satisfying <span class="mathjax raw">\(\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N\)</span> is via the Euler integral</p>
+<p><span class="mathjax raw">\[
+x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
+\]</span></p>
+<p><span class="mathjax raw">\[
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+\]</span></p>
+<blockquote class="raw">
+<p>More information about <strong>LaTeX</strong> mathematical expressions <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" class="external-link" target="_blank">here</a>.</p>
+</blockquote>
+<h2 class="raw">Alert Area</h2>
+<div role="alert" class="alert alert-success">
+<p>Yes <img align="absmiddle" alt=":tada:" class="emoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/tada.png" title=":tada:"></p>
+</div>
+<div role="alert" class="alert alert-info">
+<p>This is a message <img align="absmiddle" alt=":mega:" class="emoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/mega.png" title=":mega:"></p>
+</div>
+<div role="alert" class="alert alert-warning">
+<p>Watch out <img align="absmiddle" alt=":zap:" class="emoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/zap.png" title=":zap:"></p>
+</div>
+<div role="alert" class="alert alert-danger">
+<p>Oh No! <img align="absmiddle" alt=":fire:" class="emoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/fire.png" title=":fire:"></p>
+</div>
+<h2 class="raw">Typography</h2>
+<h3 class="raw">Headers</h3>
+<pre><code># h1 Heading
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
+</code></pre>
+<h3 class="raw">Horizontal Rules</h3>
+<hr>
+<hr>
+<hr>
+<h3 class="raw">Typographic Replacements</h3>
+<p>Enable typographer option to see result.</p>
+<p>&#xA9; &#xA9; &#xAE; &#xAE; &#x2122; &#x2122; &#xA7; &#xA7; &#xB1;</p>
+<p>test&#x2026; test&#x2026; test&#x2026; test?.. test!..</p>
+<p>!!! ??? ,</p>
+<p>Remarkable &#x2013; awesome</p>
+<p>&#x201C;Smartypants, double quotes&#x201D;</p>
+<p>&#x2018;Smartypants, single quotes&#x2019;</p>
+<h3 class="raw">Emphasis</h3>
+<p><strong>This is bold text</strong></p>
+<p><strong>This is bold text</strong></p>
+<p><em>This is italic text</em></p>
+<p><em>This is italic text</em></p>
+<p><s>Deleted text</s></p>
+<p>lu<sub>lala</sub></p>
+<p>Superscript: 19<sup>th</sup></p>
+<p>Subscript: H<sub>2</sub>O</p>
+<p><ins>Inserted text</ins></p>
+<p><mark>Marked text</mark></p>
+<h3 class="raw">Blockquotes</h3>
+<blockquote class="raw">
+<p>Blockquotes can also be nested&#x2026;</p>
+<blockquote class="raw">
+<p>&#x2026;by using additional greater-than signs right next to each other&#x2026;</p>
+<blockquote class="raw">
+<p>&#x2026;or with spaces between arrows.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 class="raw">Lists</h3>
+<h4 class="raw">Unordered</h4>
+<ul>
+<li class="raw">Create a list by starting a line with <code>+</code>, <code>-</code>, or <code>*</code></li>
+<li class="raw">Sub-lists are made by indenting 2 spaces:
+<ul>
+<li class="raw">Marker character change forces new list start:
+<ul>
+<li class="raw">Ac tristique libero volutpat at</li>
+</ul>
+<ul>
+<li class="raw">Facilisis in pretium nisl aliquet</li>
+</ul>
+<ul>
+<li class="raw">Nulla volutpat aliquam velit</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="raw">Very easy!</li>
+</ul>
+<h4 class="raw">Ordered</h4>
+<ol>
+<li class="raw">
+<p>Lorem ipsum dolor sit amet</p>
+</li>
+<li class="raw">
+<p>Consectetur adipiscing elit</p>
+</li>
+<li class="raw">
+<p>Integer molestie lorem at massa</p>
+</li>
+<li class="raw">
+<p>You can use sequential numbers&#x2026;</p>
+</li>
+<li class="raw">
+<p>&#x2026;or keep all the numbers as <code>1.</code></p>
+</li>
+<li class="raw">
+<p>feafw</p>
+</li>
+<li class="raw">
+<p>332</p>
+</li>
+<li class="raw">
+<p>242</p>
+</li>
+<li class="raw">
+<p>2552</p>
+</li>
+<li class="raw">
+<p>e2</p>
+</li>
+</ol>
+<p>Start numbering with offset:</p>
+<ol start="57">
+<li class="raw">foo</li>
+<li class="raw">bar</li>
+</ol>
+<h3 class="raw">Code</h3>
+<p>Inline <code>code</code></p>
+<p>Indented code</p>
+<pre><code>// Some comments
+line 1 of code
+line 2 of code
+line 3 of code
+</code></pre>
+<p>Block code &#x201C;fences&#x201D;</p>
+<pre><code>Sample text here...
+</code></pre>
+<p>Syntax highlighting</p>
+<pre><code class="js hljs"><span class="hljs-keyword">var</span> foo = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">bar</span>) </span>{
+  <span class="hljs-keyword">return</span> bar++;
+};
+
+<span class="hljs-built_in">console</span>.log(foo(<span class="hljs-number">5</span>));
+</code></pre>
+<h3 class="raw">Tables</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td>engine</td>
+<td>engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<p>Right aligned columns</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Option</th>
+<th style="text-align:right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">data</td>
+<td style="text-align:right">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td style="text-align:right">engine</td>
+<td style="text-align:right">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td style="text-align:right">ext</td>
+<td style="text-align:right">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<p>Left aligned columns</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Option</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">data</td>
+<td style="text-align:left">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td style="text-align:left">engine</td>
+<td style="text-align:left">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td style="text-align:left">ext</td>
+<td style="text-align:left">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<p>Center aligned columns</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Option</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">data</td>
+<td style="text-align:center">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td style="text-align:center">engine</td>
+<td style="text-align:center">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td style="text-align:center">ext</td>
+<td style="text-align:center">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<h3 class="raw">Links</h3>
+<p><a href="http://dev.nodeca.com" class="external-link" target="_blank">link text</a><br>
+<a href="http://nodeca.github.io/pica/demo/" title="title text!" class="external-link" target="_blank">link with title</a><br>
+Autoconverted link <a href="https://github.com/nodeca/pica" class="external-link" target="_blank">https://github.com/nodeca/pica</a></p>
+<h3 class="raw">Images</h3>
+<p><img src="https://octodex.github.com/images/minion.png" alt="" class=""><br>
+<img src="https://octodex.github.com/images/stormtroopocat.jpg" alt="" title="The Stormtroopocat" class=""><br>
+Like links, Images also have a footnote style syntax<br>
+<img src="https://octodex.github.com/images/dojocat.jpg" alt="" title="The Dojocat" class=""><br>
+With a reference later in the document defining the URL location:</p>
+<p><img src="https://octodex.github.com/images/minion.png" alt="" width="200" height="200" class=""><br>
+Show the image with given size</p>
+<h3 class="raw">Footnotes</h3>
+<p>Footnote 1 link<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.<br>
+Footnote 2 link<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.<br>
+Inline footnote<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> definition.<br>
+Duplicated footnote reference<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2:1]</a></sup>.</p>
+<h3 class="raw">Definition Lists</h3>
+<dl>
+<dt>Term 1</dt>
+<dd>
+<p>Definition 1<br>
+with lazy continuation.</p>
+</dd>
+<dt>Term 2 with <em>inline markup</em></dt>
+<dd>
+<p>Definition 2</p>
+<pre><code>  { some code, part of Definition 2 }
+</code></pre>
+<p>Third paragraph of definition 2.</p>
+</dd>
+</dl>
+<p><em>Compact style:</em></p>
+<dl>
+<dt>Term 1</dt>
+<dd>Definition 1</dd>
+<dt>Term 2</dt>
+<dd>Definition 2a</dd>
+<dd>Definition 2b</dd>
+</dl>
+<h3 class="raw">Abbreviations</h3>
+<p>This is an <abbr title="Hyper Text Markup Language">HTML</abbr> abbreviation example.<br>
+It converts &#x201C;<abbr title="Hyper Text Markup Language">HTML</abbr>&#x201D;, but keeps intact partial entries like &#x201C;xxxHTMLyyy&#x201D; and so on.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Footnote <strong>can have markup</strong><br>
+and multiple paragraphs. <a href="#fnref1" class="footnote-backref">&#x21A9;&#xFE0E;</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Footnote text. <a href="#fnref2" class="footnote-backref">&#x21A9;&#xFE0E;</a> <a href="#fnref2:1" class="footnote-backref">&#x21A9;&#xFE0E;</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Text of inline footnote <a href="#fnref3" class="footnote-backref">&#x21A9;&#xFE0E;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>
