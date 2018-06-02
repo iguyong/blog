@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/png" href="/favicon.ico"> 
+    <title>
+        Graph Theory
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/google-fonts.css">
+</head>
+
+<body>
+       <div class="path-browser container-fluid"><a href="/">Home</a> / <a href="/Research">Research</a> / Graph-Theory</div>
+    <div id="doc" class="markdown-body container-fluid">
+        <h1 class="raw">Graph theory</h1>
+<h2 class="raw">Courses</h2>
+<p><a href="http://www.cs.princeton.edu/courses/archive/spr11/cos423/lectures.php" class="external-link" target="_blank">Theory of Algorithms by Robert Tarjan </a></p>
+<h2 class="raw">Matching</h2>
+<h3 class="raw">Definition and theorems</h3>
+<p>alternating path, augmenting path, blossom, blossom lemma, Berge theorem</p>
+<h3 class="raw">Results</h3>
+<ol>
+<li class="raw">Unweighted, bipartite
+<ul>
+<li class="raw">augmenting path <span class="mathjax raw">\(O(mn)\)</span></li>
+<li class="raw">Hopcroft-Karp algorithm <span class="mathjax raw">\(O(\sqrt{n}m)\)</span></li>
+</ul>
+</li>
+<li class="raw">Unweighted, general
+<ul>
+<li class="raw">Edmonds method (blossom shinking)   <span class="mathjax raw">\(\quad O(mn^2)\quad O(nm\alpha(m,\lceil m/n\rceil))\)</span></li>
+</ul>
+</li>
+</ol>
+<h3 class="raw">Lectures and Papers</h3>
+<ol>
+<li class="raw"><a href="http://www.dis.uniroma1.it/~sankowski/lecture2.pdf" class="external-link" target="_blank">Matching algorithms</a><br>
+Includes augmenting path, Hopcroft-Karp algorithm, Edmonds method. Algorithms and proofs as well as the definition and lemma of blossom is more clear.</li>
+<li class="raw"><a href="http://www.cs.princeton.edu/courses/archive/spr11/cos423/Lectures/GraphMatching.pdf" class="external-link" target="_blank">Graph matching</a></li>
+<li class="raw"><a href="http://www.cs.princeton.edu/courses/archive/spr11/cos423/Lectures/NonbipartiteMatching.pdf" class="external-link" target="_blank">nonbipartite matching</a><br>
+Includes Edmonds method, explains why bolssom shirking is needed in general graph.
+<ul>
+<li class="raw">In DFS, a node may be encountered both in odd and even position. It&#x2019;s necessary to record both of the two kinds of visited label. Otherwise, feasible augmenting path may exists but not found.</li>
+<li class="raw">However, if the algorithm distinguish the two kinds of visited label, odd length cycle may exists in a found path. Therefore, blossom shirking is needed.</li>
+</ul>
+</li>
+</ol>
+<h2 class="raw">2-Matching</h2>
+<h3 class="raw">Definitions and Theorems</h3>
+<p>b-matching, capacitated b-matching, 2-factors, <span class="mathjax raw">\(C_k\)</span>-free,</p>
+<h2 class="raw">TSP</h2>
+<h3 class="raw">Definitions and Theorems</h3>
+<h3 class="raw">Results</h3>
+
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;">
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body></html>
